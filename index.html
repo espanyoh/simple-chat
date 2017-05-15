@@ -17,6 +17,10 @@
       overflow-x:hidden;
       overflow-y:visible;
     }
+    .my-msg{
+      text-align: right;
+      color: green;
+    }
   </style>
 </head>
 <body>
@@ -80,8 +84,16 @@
     });
 
     socket.on('new message', function(data){
-      $chat.append('<div class="well"><strong>'+data.username+'</strong> : '+data.msg+'</div>');
+      console.log('1:'+$username.val());
+      console.log('2:'+data.username);
+      if($username.val() === data.username){
+        $chat.append('<div class="well my-msg"><strong>'+data.username+'</strong> : '+data.msg+'</div>');
+      }else{
+        $chat.append('<div class="well"><strong>'+data.username+'</strong> : '+data.msg+'</div>');
+      }
+      
       //tempAlert("Message : "+data.msg,5000);
+
         var elem = document.getElementById('chat');
         elem.scrollTop = elem.scrollHeight;
     });
