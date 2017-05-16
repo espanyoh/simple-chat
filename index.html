@@ -21,6 +21,10 @@
       text-align: right;
       color: green;
     }
+    .chat-time{
+      font-size: 10;
+      font-style: oblique;
+    }
   </style>
 </head>
 <body>
@@ -86,6 +90,7 @@
     socket.on('new message', function(data){
       console.log('1:'+$username.val());
       console.log('2:'+data.username);
+      $chat.append('<div class="chat-time">'+new Date().toString()+'</div>');
       if($username.val() === data.username){
         $chat.append('<div class="well my-msg"><strong>'+data.username+'</strong> : '+data.msg+'</div>');
       }else{
